@@ -9,8 +9,13 @@ class PlanetHolder extends React.Component {
   render(){
     return(
       <div>
-        <h1 className="header1">Hello</h1>
-        <Planet/>
+    
+        {
+          this.props.planets.map((planet) => {
+          return <Planet planet={planet}/>
+          })
+        }
+
       </div>
     )
   }

@@ -1,9 +1,9 @@
 import React from 'react';
 
-function Planet() {
+function Planet(props) {
   return (
     <div>
-    whats up
+    <h1>{props.planet.englishName}</h1>
     </div>
   );
 }

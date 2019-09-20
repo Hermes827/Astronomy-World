@@ -6,8 +6,6 @@ import PlanetHolder from './containers/PlanetHolder.js'
 
 const planetAPI = "https://api.le-systeme-solaire.net/rest/bodies/"
 
-const filteredPlanets = "haha"
-
 class App extends React.Component {
 
   constructor(){
@@ -21,31 +19,39 @@ class App extends React.Component {
     fetch(planetAPI)
     .then(res => res.json())
     .then(data => {
-      console.log(data.bodies)
-      this.setState({
-        planets: data.bodies
-      })
-    })
-  }
-
-  filterPlanets = () => {
-    var planets = this.state.planets
-    const filteredPlanets = planets.filter(planet => {
-        if(planet.isPlanet === true) {
-          return planet
+      const filteredPlanets = data.bodies.filter(planet => {
+          if(planet.isPlanet === true) {
+            return planet
+          }
         }
-      }
-      )
-    console.log(filteredPlanets);
-
+        )
+        const refilteredPlanets = filteredPlanets.filter(planet => {
+          if(planet.englishName === "Earth"
+          || planet.englishName === "Venus"
+          || planet.englishName === "Mercury"
+          || planet.englishName === "Mars"
+          || planet.englishName === "Jupiter"
+          || planet.englishName === "Saturn"
+          || planet.englishName === "Uranus"
+          || planet.englishName === "Neptune"
+          || planet.englishName === "Pluto")
+          {
+            return planet
+          }
+        })
+      this.setState({
+        planets: refilteredPlanets
+      })
+      })
   }
+
 
   render(){
   return (
     <div className="App">
     <h1 className="header">Welcome to the Universe</h1>
-    {this.filterPlanets()}
-    <PlanetHolder/>
+    {console.log(this.state.planets)}
+    <PlanetHolder planets={this.state.planets}/>
     </div>
   );
 }
