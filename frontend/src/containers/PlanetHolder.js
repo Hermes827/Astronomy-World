@@ -6,26 +6,25 @@ class PlanetHolder extends React.Component {
     super(props)
   }
 
-
-
-
-
   render(){
 
-
-      const sortedPlanets = [...this.props.planets]
-      function sortPlanets(){
-      sortedPlanets.sort((a,b) => a.planet_id - b.planet_id);
-      return sortedPlanets
-      }
+    const sortedPlanets = [...this.props.planets]
+    function sortPlanets(){
+    sortedPlanets.sort((a,b) => a.planet_id - b.planet_id);
+    return sortedPlanets
+    }
 
     return(
       <div class="scrollmenu">
 
         {
           sortPlanets(sortedPlanets).map((planet) => {
-          return <Planet planet={planet}/>
+          return <Planet
+                  planet={planet}
+                  setCurrentPlanet={this.props.setCurrentPlanet}
+                  />
           })
+
         }
 
       </div>

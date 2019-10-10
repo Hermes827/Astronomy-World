@@ -3,9 +3,9 @@ import {picURL} from '../pictures/picturesURL.js'
 
 function Planet(props) {
   return (
-    <div>
+    <div className="planet" onClick={() => props.setCurrentPlanet(props.planet)}>
     <h1>{props.planet.name}</h1>
-    <img className="planets" src={props.planet.image}></img>
+    <img className="planetIMG" src={props.planet.image}></img>
 
     </div>
   );

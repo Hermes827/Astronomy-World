@@ -1,8 +1,8 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-// import universe from './pictures/universe.jpg'
 import PlanetHolder from './containers/PlanetHolder.js'
+import PlanetView from './components/PlanetView.js'
 
 // const planetAPI = "https://api.le-systeme-solaire.net/rest/bodies/"
 
@@ -13,48 +13,11 @@ class App extends React.Component {
   constructor(){
     super()
     this.state = {
-      planets: []
+      planets: [],
+      lookingAtPlanet: false,
+      currentPlanet: {}
     }
   }
-
-  // displayNewAPI(){
-  //   fetch(newAPI)
-  //   .then(res => res.json())
-  //   .then(data => {
-  //     console.log(data[0].image)
-  //   })
-  // }
-
-  // componentDidMount(){
-  //   fetch(planetAPI)
-  //   .then(res => res.json())
-  //   .then(data => {
-  //     const filteredPlanets = data.bodies.filter(planet => {
-  //         if(planet.isPlanet === true) {
-  //           return planet
-  //         }
-  //       }
-  //       )
-  //
-  //       const refilteredPlanets = filteredPlanets.filter(planet => {
-  //         if(planet.englishName === "Earth"
-  //         || planet.englishName === "Venus"
-  //         || planet.englishName === "Mercury"
-  //         || planet.englishName === "Mars"
-  //         || planet.englishName === "Jupiter"
-  //         || planet.englishName === "Saturn"
-  //         || planet.englishName === "Uranus"
-  //         || planet.englishName === "Neptune"
-  //         || planet.englishName === "Pluto")
-  //         {
-  //           return planet
-  //         }
-  //       })
-  //     this.setState({
-  //       planets: refilteredPlanets
-  //     })
-  //     })
-  // }
 
   componentDidMount(){
     fetch(planetAPI)
@@ -67,15 +30,30 @@ class App extends React.Component {
       })
   }
 
+  setCurrentPlanet = (planet) => {
+  this.setState({
+    currentPlanet: planet,
+    lookingAtPlanet: true
+  })
+  }
 
-
+  renderPlanetView = () => {
+    const {currentPlanet} = this.state
+    if(this.state.lookingAtPlanet === true){
+      return <PlanetView currentPlanet={currentPlanet}/>
+    }
+  }
 
   render(){
 
   return (
     <div className="App">
-    <h1 className="header">Welcome to the Universe</h1>
-    <PlanetHolder planets={this.state.planets}/>
+    <h1 className="header">Welcome to the Solar System</h1>
+    <PlanetHolder
+      planets={this.state.planets}
+      setCurrentPlanet={this.setCurrentPlanet}
+      />
+    {this.renderPlanetView()}
     </div>
   );
 }

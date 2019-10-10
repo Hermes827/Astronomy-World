@@ -25,6 +25,7 @@
 
 .header {
   color: white;
+  font-size: 500%;
 }
 
 .header1 {
@@ -36,22 +37,47 @@
   background-color: black;
   overflow: auto;
   white-space: nowrap;
-}
-/*
-.scrollmenu a {
-  display: inline-block;
-  color: white;
-  text-align: center;
-  padding: 14px;
-  text-decoration: none;
+  /* margin-top: 5%; */
 }
 
-.scrollmenu a:hover {
-  background-color: #777;
-} */
+.planet {
+padding: 0% 3%;
+}
 
-.planets {
-  padding: 0% 5%;
+.planetIMG {
   width: 300px;
   height: 300px;
+}
+
+.planetView {
+  overflow: scroll;
+  border-style: solid;
+  border-color: orange;
+  background-color: black;
+  text-align: center;
+  height: 90%;
+  position: fixed;
+  width: 45%;
+  margin: -37% 30%;
+}
+
+.planetViewIMG {
+  width: 300px;
+  height: 300px;
+}
+
+.glyph {
+
+  background-color: orange;
+  width: 25px;
+  height: 25px;
+  border-style: solid;
+  border-color: orange;
+  border-width: thin;
+}
+
+.planetView2 {
+
+  /* text-align: center;
+  display: flex; */
 }
