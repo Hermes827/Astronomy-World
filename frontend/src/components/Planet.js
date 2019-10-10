@@ -4,9 +4,8 @@ import {picURL} from '../pictures/picturesURL.js'
 function Planet(props) {
   return (
     <div>
-    <h1>{props.planet.englishName}</h1>
-    {console.log(picURL)}
-
+    <h1>{props.planet.name}</h1>
+    <img className="planets" src={props.planet.image}></img>
 
     </div>
   );
