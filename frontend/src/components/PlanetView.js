@@ -7,6 +7,8 @@ function PlanetView(props) {
     <h1>{props.currentPlanet.name} <img className="glyph" src={props.currentPlanet.glyph}></img></h1>
     </div>
     <img className="planetViewIMG" src={props.currentPlanet.image}></img>
+    <button onClick={()=> props.returnToHomepage()}>Return to homepage</button>
+    {console.log(props)}
     </div>
   );
 }

@@ -35,14 +35,26 @@ class App extends React.Component {
     currentPlanet: planet,
     lookingAtPlanet: true
   })
+    console.log("hello")
+  }
+
+  returnToHomepage = () => {
+    this.setState({
+      lookingAtPlanet: false
+    })
   }
 
   renderPlanetView = () => {
     const {currentPlanet} = this.state
     if(this.state.lookingAtPlanet === true){
-      return <PlanetView currentPlanet={currentPlanet}/>
+      return <PlanetView
+              currentPlanet={currentPlanet}
+              returnToHomepage={this.returnToHomepage}
+              />
     }
   }
+
+
 
   render(){
 
