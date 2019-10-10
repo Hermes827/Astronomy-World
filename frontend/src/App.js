@@ -6,6 +6,8 @@ import PlanetHolder from './containers/PlanetHolder.js'
 
 const planetAPI = "https://api.le-systeme-solaire.net/rest/bodies/"
 
+const newAPI = "http://localhost:3000/api/v1/planets"
+
 class App extends React.Component {
 
   constructor(){
@@ -13,6 +15,14 @@ class App extends React.Component {
     this.state = {
       planets: []
     }
+  }
+
+  displayNewAPI(){
+    fetch(newAPI)
+    .then(res => res.json())
+    .then(data => {
+      console.log(data[0].image)
+    })
   }
 
   componentDidMount(){
@@ -25,6 +35,7 @@ class App extends React.Component {
           }
         }
         )
+
         const refilteredPlanets = filteredPlanets.filter(planet => {
           if(planet.englishName === "Earth"
           || planet.englishName === "Venus"
@@ -46,11 +57,16 @@ class App extends React.Component {
   }
 
 
+
   render(){
+
+const planetIMG = this.displayNewAPI()
+
   return (
     <div className="App">
     <h1 className="header">Welcome to the Universe</h1>
     {console.log(this.state.planets)}
+    <img src={planetIMG}></img>
     <PlanetHolder planets={this.state.planets}/>
     </div>
   );

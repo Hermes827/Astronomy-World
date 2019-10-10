@@ -8,8 +8,8 @@ class PlanetHolder extends React.Component {
 
   render(){
     return(
-      <div>
-    
+      <div class="scrollmenu">
+
         {
           this.props.planets.map((planet) => {
           return <Planet planet={planet}/>
